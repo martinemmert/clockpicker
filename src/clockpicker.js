@@ -1,7 +1,7 @@
 /*!
- * ClockPicker v{package.version} (http://martinemmert.github.io/clockpicker/)
- * Copyright 2014 Wang Shenwei.
- * Licensed under MIT (https://github.com/martinemmert/clockpicker/blob/gh-pages/LICENSE)
+ * ClockPicker v{package.version} (http://martinemmert.github.io/clockpicker-umd/)
+ * Copyright 2014 Wang Shenwei, 2018 Martin Emmert
+ * Licensed under MIT (https://github.com/martinemmert/clockpicker-umd/blob/gh-pages/LICENSE)
  */
 
 // Uses CommonJS, AMD or browser globals to create a jQuery plugin.

@@ -24,6 +24,7 @@ gulp.task("js", function() {
 gulp.task("css:bootstrap", function() {
   return gulp
     .src("src/clockpicker.css")
+    .pipe(replace(versionRegExp, version))
     .pipe(rename({ prefix: "bootstrap-" }))
     .pipe(cleanDest("dist"))
     .pipe(gulp.dest("dist"))
@@ -36,6 +37,7 @@ gulp.task("css:standalone", function() {
   return gulp
     .src(["src/standalone.css", "src/clockpicker.css"])
     .pipe(concat("clockpicker.css"))
+    .pipe(replace(versionRegExp, version))
     .pipe(rename({ prefix: "standalone-" }))
     .pipe(cleanDest("dist"))
     .pipe(gulp.dest("dist"))
@@ -55,4 +57,10 @@ gulp.task("test", function() {
   return gulp.src("test/*.html").pipe(qunit());
 });
 
-gulp.task("default", gulp.parallel(["js", "css"]));
+gulp.task("definitions", function() {
+  return gulp.src("index.d.ts")
+    .pipe(replace(versionRegExp, version))
+    .pipe(gulp.dest("types"));
+});
+
+gulp.task("default", gulp.parallel(["js", "css", "definitions"]));

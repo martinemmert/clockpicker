@@ -3,6 +3,7 @@
   "description": "A clock-style timepicker for Bootstrap (or jQuery)",
   "version": "0.4.2",
   "main": "dist/clockpicker.min.js",
+  "types": "types/index.d.ts",
   "authors": [
     {
       "name": "Wang Shenwei",
