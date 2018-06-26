@@ -1,4 +1,6 @@
-# ClockPicker [![Bower version](https://badge.fury.io/bo/clockpicker.svg)](http://badge.fury.io/bo/clockpicker) [![Build Status](https://travis-ci.org/martinemmert/clockpicker-umd.svg)](https://travis-ci.org/martinemmert/clockpicker-umd)  [![devDependency Status](https://david-dm.org/weareoutman/clockpicker/dev-status.svg)](https://david-dm.org/weareoutman/clockpicker#info=devDependencies)
+# ClockPicker 
+[![Build Status](https://travis-ci.org/martinemmert/clockpicker-umd.svg)](https://travis-ci.org/martinemmert/clockpicker-umd)
+[![devDependency Status](https://david-dm.org/martinemmert/clockpicker-umd/dev-status.svg)](https://david-dm.org/martinemmert/clockpicker-umd#info=devDependencies)
 
 A clock-style timepicker for Bootstrap (or jQuery).
 [Documentation and examples](http://martinemmert.github.io/clockpicker-umd/).
