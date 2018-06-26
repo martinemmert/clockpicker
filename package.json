@@ -1,5 +1,5 @@
 {
-  "name": "clockpicker",
+  "name": "clockpicker-umd",
   "description": "A clock-style timepicker for Bootstrap (or jQuery)",
   "version": "0.3.0",
   "authors": [
@@ -14,10 +14,10 @@
       "url": "http://martinemmert.de/"
     }
   ],
-  "homepage": "http://martinemmert.github.io/clockpicker/",
+  "homepage": "http://martinemmert.github.io/clockpicker-umd/",
   "repository": {
     "type": "git",
-    "url": "git://github.com/martinemmert/clockpicker.git"
+    "url": "git://github.com/martinemmert/clockpicker-umd.git"
   },
   "scripts": {
     "gulp": "./node_modules/.bin/gulp",
