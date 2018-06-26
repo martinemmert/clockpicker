@@ -133,6 +133,10 @@ gulp
 
 ## Change log
 
+### 0.2.0
+
+* adds umd factory pattern to support commonjs and amd loaders
+
 ### 0.1.0 (Maintenance Relase)
 
 * Updates build scripts
