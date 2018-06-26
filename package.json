@@ -1,7 +1,7 @@
 {
   "name": "clockpicker-umd",
   "description": "A clock-style timepicker for Bootstrap (or jQuery)",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "main": "dist/clockpicker.min.js",
   "types": "types/index.d.ts",
   "authors": [
