@@ -55,4 +55,4 @@ gulp.task("test", function() {
   return gulp.src("test/*.html").pipe(qunit());
 });
 
-gulp.task("default", gulp.parallel(["js", "css", "watch"]));
+gulp.task("default", gulp.parallel(["js", "css"]));
