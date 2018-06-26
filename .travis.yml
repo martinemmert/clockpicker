@@ -4,7 +4,7 @@ node_js:
   - "node"
 
 before_script:
-  - npm gulp
+  - npm run gulp
 
 branches:
   only:
