@@ -1,33 +1,29 @@
 {
-  "name": "clockpicker",
+  "name": "clockpicker-umd",
   "description": "A clock-style timepicker for Bootstrap (or jQuery)",
-  "version": "0.0.7",
-  "main": [
-    "dist/jquery-clockpicker.js",
-    "dist/jquery-clockpicker.css"
-  ],
+  "version": "0.4.0",
+  "main": ["dist/clockpicker.js", "dist/standalonw-clockpicker.css"],
   "license": "MIT",
-  "ignore": [
-    "*",
-    "!dist/*",
-    "!bower.json",
-    "!LICENSE",
-    "!README.md"
-  ],
+  "ignore": ["*", "!dist/*", "!bower.json", "!LICENSE", "!README.md"],
   "keywords": ["timepicker", "jquery"],
   "authors": [
     {
       "name": "Wang Shenwei",
       "email": "wangshenwei@qq.com",
       "homepage": "http://wangshenwei.com/"
+    },
+    {
+      "name": "Martin Emmert",
+      "email": "martin@martinemmert.de",
+      "url": "http://martinemmert.de/"
     }
   ],
-  "homepage": "http://weareoutman.github.io/clockpicker/",
+  "homepage": "http://martinemmert.github.io/clockpicker-umd/",
   "repository": {
     "type": "git",
-    "url": "git://github.com/weareoutman/clockpicker.git"
+    "url": "git://github.com/martinemmert/clockpicker-umd.git"
   },
   "dependencies": {
-    "jquery" : ">=1.7"
+    "jquery": ">=1.7"
   }
 }
