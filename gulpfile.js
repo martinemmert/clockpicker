@@ -1,73 +1,58 @@
-var gulp = require('gulp'),
-	uglify = require('gulp-uglify'),
-	minifyCSS = require('gulp-minify-css'),
-	rename = require('gulp-rename'),
-	concat = require('gulp-concat'),
-	qunit = require('gulp-qunit'),
-	replace = require('gulp-replace'),
-	// Replace package.version
-	version = require('./package').version,
-	versionRegExp = /\{package\.version\}/;
+const gulp = require("gulp");
+const uglify = require("gulp-uglify");
+const minifyCSS = require("gulp-minify-css");
+const rename = require("gulp-rename");
+const concat = require("gulp-concat");
+const qunit = require("gulp-qunit");
+const replace = require("gulp-replace");
+const version = require("./package").version;
+const versionRegExp = /\{package\.version\}/;
+const cleanDest = require("gulp-clean-dest");
 
-// Rename and uglify scripts
-function js(prefix) {
-	gulp.src('src/clockpicker.js')
-		.pipe(rename({
-			prefix: prefix + '-'
-		}))
-		.pipe(replace(versionRegExp, version))
-		.pipe(gulp.dest('dist'))
-		.pipe(uglify({
-			preserveComments: 'some'
-		}))
-		.pipe(rename({
-			suffix: '.min'
-		}))
-		.pipe(gulp.dest('dist'));
-}
-
-// Rename, concat and minify stylesheets
-function css(prefix) {
-	var stream;
-	if (prefix === 'bootstrap') {
-		stream = gulp.src('src/clockpicker.css');
-	} else {
-		// Concat with some styles picked from bootstrap
-		stream = gulp.src(['src/standalone.css', 'src/clockpicker.css'])
-			.pipe(concat('clockpicker.css'));
-	}
-	stream.pipe(rename({
-			prefix: prefix + '-'
-		}))
-		.pipe(replace(versionRegExp, version))
-		.pipe(gulp.dest('dist'))
-		.pipe(minifyCSS({
-			keepSpecialComments: 1
-		}))
-		.pipe(rename({
-			suffix: '.min'
-		}))
-		.pipe(gulp.dest('dist'));
-}
-
-gulp.task('js', function() {
-	js('bootstrap');
-	js('jquery');
+gulp.task("js", function() {
+  return gulp
+    .src("src/clockpicker.js")
+    .pipe(replace(versionRegExp, version))
+    .pipe(cleanDest("dist"))
+    .pipe(gulp.dest("dist"))
+    .pipe(uglify())
+    .pipe(rename({ suffix: ".min" }))
+    .pipe(cleanDest("dist"))
+    .pipe(gulp.dest("dist"));
 });
 
-gulp.task('css', function() {
-	css('bootstrap');
-	css('jquery');
+gulp.task("css:bootstrap", function() {
+  return gulp
+    .src("src/clockpicker.css")
+    .pipe(rename({ prefix: "bootstrap-" }))
+    .pipe(cleanDest("dist"))
+    .pipe(gulp.dest("dist"))
+    .pipe(minifyCSS({ keepSpecialComments: 1 }))
+    .pipe(rename({ suffix: ".min" }))
+    .pipe(gulp.dest("dist"));
 });
 
-gulp.task('watch', function() {
-	gulp.watch('src/*.js', ['js']);
-	gulp.watch('src/*.css', ['css']);
+gulp.task("css:standalone", function() {
+  return gulp
+    .src(["src/standalone.css", "src/clockpicker.css"])
+    .pipe(concat("clockpicker.css"))
+    .pipe(rename({ prefix: "standalone-" }))
+    .pipe(cleanDest("dist"))
+    .pipe(gulp.dest("dist"))
+    .pipe(minifyCSS({ keepSpecialComments: 1 }))
+    .pipe(rename({ suffix: ".min" }))
+    .pipe(gulp.dest("dist"));
 });
 
-gulp.task('test', function() {
-    return gulp.src('test/*.html')
-        .pipe(qunit());
+gulp.task("css", gulp.parallel(["css:bootstrap", "css:standalone"]));
+
+gulp.task("watch", function() {
+  gulp.watch("src/**/*.js", gulp.series("js"));
+  gulp.watch("src/**/*.css", gulp.series("css"));
 });
 
-gulp.task('default', ['js', 'css', 'watch']);
+gulp.task("test", function() {
+  return gulp.src("test/*.html").pipe(qunit());
+});
+
+gulp.task("default", gulp.parallel(["js", "css", "watch"]));

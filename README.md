@@ -1,7 +1,7 @@
 # ClockPicker [![Bower version](https://badge.fury.io/bo/clockpicker.svg)](http://badge.fury.io/bo/clockpicker) [![Build Status](https://travis-ci.org/weareoutman/clockpicker.svg)](https://travis-ci.org/weareoutman/clockpicker)  [![devDependency Status](https://david-dm.org/weareoutman/clockpicker/dev-status.svg)](https://david-dm.org/weareoutman/clockpicker#info=devDependencies)
 
 A clock-style timepicker for Bootstrap (or jQuery).
-[Documentation and examples](http://weareoutman.github.io/clockpicker/).
+[Documentation and examples](http://martinemmert.github.io/clockpicker/).
 
 ![Screenshot](http://weareoutman.github.io/clockpicker/assets/images/screenshot-1.png)
 ![clockpicker-12-hour-screenshot](https://cloud.githubusercontent.com/assets/5218249/3613434/03da9888-0db8-11e4-8bdb-dbabb5e91e5c.png)
@@ -45,7 +45,7 @@ Feel free to use `jquery-*` files instead of `bootstrap-*` , for non-bootstrap p
 <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
 
 <!-- ClockPicker script -->
-<script type="text/javascript" src="dist/bootstrap-clockpicker.min.js"></script>
+<script type="text/javascript" src="dist/clockpicker.min.js"></script>
 
 <script type="text/javascript">
 $('.clockpicker').clockpicker()
@@ -102,13 +102,11 @@ if (something) {
 clockpicker/
 ├── dist/
 │   ├── bootstrap-clockpicker.css      # full code for bootstrap
-│   ├── bootstrap-clockpicker.js
 │   ├── bootstrap-clockpicker.min.css  # compiled and minified files for bootstrap
-│   ├── bootstrap-clockpicker.min.js
-│   ├── jquery-clockpicker.css         # full code for jquery
-│   ├── jquery-clockpicker.js
-│   ├── jquery-clockpicker.min.css     # compiled and minified files for jquery
-│   └── jquery-clockpicker.min.js
+│   ├── standalone-clockpicker.css         # full code for jquery
+│   ├── standalone-clockpicker.min.css     # compiled and minified files for jquery
+│   ├── clockpicker.js
+│   └── clockpicker.min.js
 └── src/                               # source code
     ├── clockpicker.css
     ├── clockpicker.js
@@ -118,7 +116,7 @@ clockpicker/
 ## Development
 
 ```bash
-git clone https://github.com/weareoutman/clockpicker.git
+git clone https://github.com/martinemmert/clockpicker.git
 cd clockpicker
 npm install -g gulp
 npm install
@@ -135,16 +133,24 @@ gulp
 
 ## Change log
 
-0.0.7
+### 0.1.0 (Maintenance Relase)
+
+* Updates build scripts
+* Renames `jquery-` prefix to `standalone-`
+* Removes duplicate js export, use `clockpicker.js` and `clockpicker.min.js`
+	instead of the prefixed ones
+* updates qunit tests to use the correct files
+
+### 0.0.7
 
 * Enables twelve hour mode with AM & PM buttons.
 
-0.0.6
+### 0.0.6
 
 * Default time can be setted to `now`.
 * Registered as a bower package.
 
-0.0.5
+### 0.0.5
 
 * Functional operations.
 

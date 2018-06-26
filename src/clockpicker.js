@@ -1,10 +1,10 @@
 /*!
- * ClockPicker v{package.version} (http://weareoutman.github.io/clockpicker/)
+ * ClockPicker v{package.version} (http://martinemmert.github.io/clockpicker/)
  * Copyright 2014 Wang Shenwei.
- * Licensed under MIT (https://github.com/weareoutman/clockpicker/blob/gh-pages/LICENSE)
+ * Licensed under MIT (https://github.com/martinemmert/clockpicker/blob/gh-pages/LICENSE)
  */
 
-;(function(){
+(function(){
 	var $ = window.jQuery,
 		$win = $(window),
 		$doc = $(document),
