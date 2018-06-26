@@ -1,0 +1,11 @@
+assets
+node_modules
+test
+src
+.npmignore
+.travis.yml
+.gitignore
+bower.json
+gulpfile.js
+index.html
+jquery.html
