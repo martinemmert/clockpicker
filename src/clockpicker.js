@@ -6,7 +6,7 @@
 
 // Uses CommonJS, AMD or browser globals to create a jQuery plugin.
 
-;(function(factory) {
+(function(factory) {
   if (typeof define === "function" && define.amd) {
     // AMD. Register as an anonymous module.
     define(["jquery"], factory);
@@ -411,12 +411,12 @@
       this.canvas = canvas;
     }
 
-    raiseCallback(this.options.init);
+    raiseCallback(this.options.init, this.getValue());
   }
 
-  function raiseCallback(callbackFunction) {
+  function raiseCallback(callbackFunction, currentValue) {
     if (callbackFunction && typeof callbackFunction === "function") {
-      callbackFunction();
+      callbackFunction(currentValue);
     }
   }
 
@@ -493,8 +493,6 @@
       return;
     }
 
-    raiseCallback(this.options.beforeShow);
-
     var self = this;
 
     // Initialize
@@ -523,6 +521,8 @@
     this.spanHours.html(leadingZero(this.hours));
     this.spanMinutes.html(leadingZero(this.minutes));
 
+		raiseCallback(this.options.beforeShow, this.getValue());
+
     // Toggle to hours view
     this.toggleView("hours");
 
@@ -550,12 +550,12 @@
       }
     });
 
-    raiseCallback(this.options.afterShow);
+    raiseCallback(this.options.afterShow, this.getValue());
   };
 
   // Hide popover
   ClockPicker.prototype.hide = function() {
-    raiseCallback(this.options.beforeHide);
+    raiseCallback(this.options.beforeHide, this.getValue());
 
     this.isShown = false;
 
@@ -565,14 +565,14 @@
 
     this.popover.hide();
 
-    raiseCallback(this.options.afterHide);
+    raiseCallback(this.options.afterHide, this.getValue());
   };
 
   // Toggle to hours or minutes view
   ClockPicker.prototype.toggleView = function(view, delay) {
     var raiseAfterHourSelect = false;
     if (view === "minutes" && $(this.hoursView).css("visibility") === "visible") {
-      raiseCallback(this.options.beforeHourSelect);
+      raiseCallback(this.options.beforeHourSelect, this.getValue());
       raiseAfterHourSelect = true;
     }
     var isHours = view === "hours",
@@ -598,7 +598,7 @@
     }, duration);
 
     if (raiseAfterHourSelect) {
-      raiseCallback(this.options.afterHourSelect);
+      raiseCallback(this.options.afterHourSelect, this.getValue());
     }
   };
 
@@ -719,9 +719,15 @@
     this.fg.setAttribute("cy", cy);
   };
 
+  ClockPicker.prototype.getValue = function() {
+    var value = leadingZero(this.hours) + ":" + leadingZero(this.minutes);
+    if (this.options.twelvehour) value = value + this.amOrPm;
+    return value;
+  };
+
   // Hours and minutes are selected
   ClockPicker.prototype.done = function() {
-    raiseCallback(this.options.beforeDone);
+    raiseCallback(this.options.beforeDone, this.getValue());
     this.hide();
     var last = this.input.prop("value"),
       value = leadingZero(this.hours) + ":" + leadingZero(this.minutes);
@@ -741,7 +747,7 @@
       this.input.trigger("blur");
     }
 
-    raiseCallback(this.options.afterDone);
+    raiseCallback(this.options.afterDone, this.getValue());
   };
 
   // Remove clockpicker from input
@@ -762,8 +768,8 @@
   $.fn.clockpicker = function(option) {
     var args = Array.prototype.slice.call(arguments, 1);
     return this.each(function() {
-      var $this = $(this),
-        data = $this.data("clockpicker");
+      var $this = $(this);
+      var data = $this.data("clockpicker");
       if (!data) {
         var options = $.extend(
           {},
@@ -773,7 +779,7 @@
         );
         $this.data("clockpicker", new ClockPicker($this, options));
       } else {
-        // Manual operatsions. show, hide, remove, e.g.
+        // Manual operations. show, hide, remove, e.g.
         if (typeof data[option] === "function") {
           data[option].apply(data, args);
         }

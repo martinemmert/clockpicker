@@ -77,15 +77,15 @@ if (something) {
 | twelvehour | false | enables twelve hour mode with AM & PM buttons |
 | vibrate | true | vibrate the device when dragging clock hand |
 | fromnow | 0 | set default time to * milliseconds from now (using with default = 'now') |
-| init | | callback function triggered after the colorpicker has been initiated |
-| beforeShow | | callback function triggered before popup is shown |
-| afterShow | | callback function triggered after popup is shown |
-| beforeHide | | callback function triggered before popup is hidden Note:will be triggered between a beforeDone and afterDone |
-| afterHide | | callback function triggered after popup is hidden Note:will be triggered between a beforeDone and afterDone |
-| beforeHourSelect | | callback function triggered before user makes an hour selection |
-| afterHourSelect | | callback function triggered after user makes an hour selection |
-| beforeDone | | callback function triggered before time is written to input |
-| afterDone | | callback function triggered after time is written to input |
+| init | `undefined` | callback function triggered after the colorpicker has been initiated |
+| beforeShow | `undefined` | callback function triggered with the current `value`  before popup is shown |
+| afterShow | `undefined` | callback function triggered with the current `value`  after popup is shown |
+| beforeHide | `undefined` | callback function triggered with the current `value`  before popup is hidden Note:will be triggered between a beforeDone and afterDone |
+| afterHide | `undefined` | callback function triggered with the current `value`  after popup is hidden Note:will be triggered between a beforeDone and afterDone |
+| beforeHourSelect | `undefined` | callback function triggered with the current `value`  before user makes an hour selection |
+| afterHourSelect | `undefined` | callback function triggered with the current `value`  after user makes an hour selection |
+| beforeDone | `undefined` | callback function triggered with the current `value`  before time is written to input |
+| afterDone | `undefined` | callback function triggered with the current `value` after time is written to input |
 
 ## Operations
 
@@ -132,6 +132,10 @@ gulp
 - [ ] Seconds View ?
 
 ## Change log
+
+### 0.3.0
+
+* adds current value as argument to all callbacks besides `init`
 
 ### 0.2.0
 

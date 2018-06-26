@@ -155,6 +155,50 @@ test('clockpicker manual operations', function(){
     ok(! input.data('clockpicker'), 'clockpicker is removed manually');
 });
 
+test('clockpicker callbacks operations', function(){
+    var expectedValue = "13:00"
+
+    var options = {
+        default: expectedValue,
+        beforeShow: function() {},
+        afterShow: function() {},
+        beforeHide: function() {},
+        afterHide: function() {},
+        beforeHourSelect: function() {},
+        afterHourSelect: function() {},
+        beforeDone: function() {},
+        afterDone: function() {}
+    };
+
+    var input = $('<input />').appendTo('#qunit-fixture');
+    var beforeShow = sinon.spy(options, "beforeShow");
+    var afterShow = sinon.spy(options, "afterShow");
+    var beforeHide = sinon.spy(options, "beforeHide");
+    var afterHide = sinon.spy(options, "afterHide");
+    var beforeHourSelect = sinon.spy(options, "beforeHourSelect");
+    var afterHourSelect = sinon.spy(options, "afterHourSelect");
+    var beforeDone = sinon.spy(options, "beforeDone");
+    var afterDone = sinon.spy(options, "afterDone");
+
+    // Initialize
+    input.clockpicker(options);
+
+    // go through the stages
+    input.clockpicker('show');
+    input.clockpicker('toggleView', 'minutes');
+    input.clockpicker('done');
+    input.clockpicker('remove');
+
+    ok(beforeShow.withArgs(expectedValue).calledOnce, "beforeShow is called once with " + expectedValue);
+    ok(afterShow.withArgs(expectedValue).calledOnce, "afterShow is called once with " + expectedValue);
+    ok(beforeHide.withArgs(expectedValue).calledOnce, "beforeHide is called once with " + expectedValue);
+    ok(afterHide.withArgs(expectedValue).calledOnce, "afterHide is called once with " + expectedValue);
+    ok(beforeHourSelect.withArgs(expectedValue).calledOnce, "beforeHourSelect is called once with " + expectedValue);
+    ok(afterHourSelect.withArgs(expectedValue).calledOnce, "afterHourSelect is called once with " + expectedValue);
+    ok(beforeDone.withArgs(expectedValue).calledOnce, "beforeDone is called once with " + expectedValue);
+    ok(afterDone.withArgs(expectedValue).calledOnce, "afterDone is called once with " + expectedValue);
+});
+
 test('clockpicker default time is now', function(){
     var input = $('<input />')
             .appendTo('#qunit-fixture');

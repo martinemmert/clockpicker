@@ -68,7 +68,7 @@ code {
 <div class="navbar navbar-inverse navbar-static-top" role="navigation">
 	<div class="container">
 		<ul class="nav navbar-nav pull-right">
-			<li><a href="https://github.com/weareoutman/clockpicker">Fork me on GitHub</a></li>
+			<li><a href="https://github.com/martinemmert/clockpicker">Fork me on GitHub</a></li>
 		</ul>
 		<h3>ClockPicker</h3>
 	</div>
@@ -212,29 +212,29 @@ $('#single-input').clockpicker({
 						init: function() { 
 							console.log("colorpicker initiated");
 						},
-						beforeShow: function() {
-							console.log("before show");
+						beforeShow: function(value) {
+							console.log("before show", value);
 						},
-						afterShow: function() {
-							console.log("after show");
+						afterShow: function(value) {
+							console.log("after show", value);
 						},
-						beforeHide: function() {
-							console.log("before hide");
+						beforeHide: function(value) {
+							console.log("before hide", value);
 						},
-						afterHide: function() {
-							console.log("after hide");
+						afterHide: function(value) {
+							console.log("after hide", value);
 						},
-						beforeHourSelect: function() {
-							console.log("before hour selected");
+						beforeHourSelect: function(value) {
+							console.log("before hour selected", value);
 						},
-						afterHourSelect: function() {
-							console.log("after hour selected");
+						afterHourSelect: function(value) {
+							console.log("after hour selected", value);
 						},
-						beforeDone: function() {
-							console.log("before done");
+						beforeDone: function(value) {
+							console.log("before done", value);
 						},
-						afterDone: function() {
-							console.log("after done");
+						afterDone: function(value) {
+							console.log("after done", value);
 						}
 				});
 
