@@ -12,6 +12,5 @@ deploy:
   api_key:
     secure: RaND1SEwl41JvyxZXA1tZpGBmP//3by9Vc7AxyjXCx7C7nZUETEs3yH/MLJ5MpedMPqj+PxYbBEkyTRGgKHvt9Wy3z6lSyi/PANi7hwxmVjbRSNe7+DFf6r9G1Bn04DmzAkdrGhamM+3Oe/SL7gSnE5yysHqa6e/Kh3AmiObB7jZCEtmwJU4qHbDsTZWum/db52lMFURIVY83yldFSJyybJ1Sf+4YVqAlhjQEZC33uRu1qka+LNcxNzKOj+spChqeOinclQ3g4lyZUqu0MPUQEnbsg8IRkWcXXN9tRjZsabbSAgNPUwvUw/yN88wi/mjQ1JVo2v0Kp+1PWjqvZHvC7jfc240+owcbLGTJxdfdM5XzqmB8bFR1uQRs2KbMgLQgu8ciIwsLdLgKiGQlsfFwjP9Mb9znrMl+riZpmX1wkw2GKyNMCNNlW12pbfSRL5Lal6O2effis4/nxdeqC0SVi3fnM3HPdHVQNRY97tg+8ob7MgFi/wEZuiJlxqXO5eTJM6uz8bZ4eidUlL/Xim53jJ4xj4N2utoOgG1p+2iNI4SQQyOe57aN4w9u85n5avwjQ8tR8RL/YQBu73tqzMtyCdZSyE1MVjjuwkqT+o46DeoDzE+OJtT2ApImLgI+x8X33norPDrfTQFpAiEaHH9o/th4xxhfUEAxTic9/mMfcE=
   on:
-    tags: true
     repo: martinemmert/clockpicker-umd
     branch: gh-pages
